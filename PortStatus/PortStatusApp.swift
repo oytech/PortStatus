@@ -4,7 +4,7 @@ import SwiftUI
 struct PortStatusApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            PortListView()
         }
     }
 }

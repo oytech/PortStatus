@@ -1,0 +1,546 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXContainerItemProxy section */
+		842555D82DCA4A6100872947 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 842555BE2DCA4A5F00872947 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 842555C52DCA4A5F00872947;
+			remoteInfo = PortStatus;
+		};
+		842555E22DCA4A6100872947 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 842555BE2DCA4A5F00872947 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 842555C52DCA4A5F00872947;
+			remoteInfo = PortStatus;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		842555C62DCA4A5F00872947 /* PortStatus.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PortStatus.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		842555D72DCA4A6100872947 /* PortStatusTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PortStatusTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		842555E12DCA4A6100872947 /* PortStatusUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PortStatusUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		842555C82DCA4A5F00872947 /* PortStatus */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = PortStatus;
+			sourceTree = "<group>";
+		};
+		842555DA2DCA4A6100872947 /* PortStatusTests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = PortStatusTests;
+			sourceTree = "<group>";
+		};
+		842555E42DCA4A6100872947 /* PortStatusUITests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = PortStatusUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXFileSystemSynchronizedRootGroup section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		842555C32DCA4A5F00872947 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		842555D42DCA4A6100872947 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		842555DE2DCA4A6100872947 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		842555BD2DCA4A5F00872947 = {
+			isa = PBXGroup;
+			children = (
+				842555C82DCA4A5F00872947 /* PortStatus */,
+				842555DA2DCA4A6100872947 /* PortStatusTests */,
+				842555E42DCA4A6100872947 /* PortStatusUITests */,
+				842555C72DCA4A5F00872947 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		842555C72DCA4A5F00872947 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				842555C62DCA4A5F00872947 /* PortStatus.app */,
+				842555D72DCA4A6100872947 /* PortStatusTests.xctest */,
+				842555E12DCA4A6100872947 /* PortStatusUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		842555C52DCA4A5F00872947 /* PortStatus */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 842555EB2DCA4A6100872947 /* Build configuration list for PBXNativeTarget "PortStatus" */;
+			buildPhases = (
+				842555C22DCA4A5F00872947 /* Sources */,
+				842555C32DCA4A5F00872947 /* Frameworks */,
+				842555C42DCA4A5F00872947 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				842555C82DCA4A5F00872947 /* PortStatus */,
+			);
+			name = PortStatus;
+			packageProductDependencies = (
+			);
+			productName = PortStatus;
+			productReference = 842555C62DCA4A5F00872947 /* PortStatus.app */;
+			productType = "com.apple.product-type.application";
+		};
+		842555D62DCA4A6100872947 /* PortStatusTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 842555EE2DCA4A6100872947 /* Build configuration list for PBXNativeTarget "PortStatusTests" */;
+			buildPhases = (
+				842555D32DCA4A6100872947 /* Sources */,
+				842555D42DCA4A6100872947 /* Frameworks */,
+				842555D52DCA4A6100872947 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				842555D92DCA4A6100872947 /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				842555DA2DCA4A6100872947 /* PortStatusTests */,
+			);
+			name = PortStatusTests;
+			packageProductDependencies = (
+			);
+			productName = PortStatusTests;
+			productReference = 842555D72DCA4A6100872947 /* PortStatusTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		842555E02DCA4A6100872947 /* PortStatusUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 842555F12DCA4A6100872947 /* Build configuration list for PBXNativeTarget "PortStatusUITests" */;
+			buildPhases = (
+				842555DD2DCA4A6100872947 /* Sources */,
+				842555DE2DCA4A6100872947 /* Frameworks */,
+				842555DF2DCA4A6100872947 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				842555E32DCA4A6100872947 /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				842555E42DCA4A6100872947 /* PortStatusUITests */,
+			);
+			name = PortStatusUITests;
+			packageProductDependencies = (
+			);
+			productName = PortStatusUITests;
+			productReference = 842555E12DCA4A6100872947 /* PortStatusUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		842555BE2DCA4A5F00872947 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1620;
+				LastUpgradeCheck = 1620;
+				TargetAttributes = {
+					842555C52DCA4A5F00872947 = {
+						CreatedOnToolsVersion = 16.2;
+					};
+					842555D62DCA4A6100872947 = {
+						CreatedOnToolsVersion = 16.2;
+						TestTargetID = 842555C52DCA4A5F00872947;
+					};
+					842555E02DCA4A6100872947 = {
+						CreatedOnToolsVersion = 16.2;
+						TestTargetID = 842555C52DCA4A5F00872947;
+					};
+				};
+			};
+			buildConfigurationList = 842555C12DCA4A5F00872947 /* Build configuration list for PBXProject "PortStatus" */;
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 842555BD2DCA4A5F00872947;
+			minimizedProjectReferenceProxies = 1;
+			preferredProjectObjectVersion = 77;
+			productRefGroup = 842555C72DCA4A5F00872947 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				842555C52DCA4A5F00872947 /* PortStatus */,
+				842555D62DCA4A6100872947 /* PortStatusTests */,
+				842555E02DCA4A6100872947 /* PortStatusUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		842555C42DCA4A5F00872947 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		842555D52DCA4A6100872947 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		842555DF2DCA4A6100872947 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		842555C22DCA4A5F00872947 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		842555D32DCA4A6100872947 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		842555DD2DCA4A6100872947 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		842555D92DCA4A6100872947 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 842555C52DCA4A5F00872947 /* PortStatus */;
+			targetProxy = 842555D82DCA4A6100872947 /* PBXContainerItemProxy */;
+		};
+		842555E32DCA4A6100872947 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 842555C52DCA4A5F00872947 /* PortStatus */;
+			targetProxy = 842555E22DCA4A6100872947 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		842555E92DCA4A6100872947 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MACOSX_DEPLOYMENT_TARGET = 14.7;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		842555EA2DCA4A6100872947 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MACOSX_DEPLOYMENT_TARGET = 14.7;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = macosx;
+				SWIFT_COMPILATION_MODE = wholemodule;
+			};
+			name = Release;
+		};
+		842555EC2DCA4A6100872947 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = PortStatus/PortStatus.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"PortStatus/Preview Content\"";
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.github.oytech.PortStatus;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		842555ED2DCA4A6100872947 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = PortStatus/PortStatus.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"PortStatus/Preview Content\"";
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.github.oytech.PortStatus;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		842555EF2DCA4A6100872947 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 14.7;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.github.oytech.PortStatusTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/PortStatus.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/PortStatus";
+			};
+			name = Debug;
+		};
+		842555F02DCA4A6100872947 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 14.7;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.github.oytech.PortStatusTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/PortStatus.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/PortStatus";
+			};
+			name = Release;
+		};
+		842555F22DCA4A6100872947 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.github.oytech.PortStatusUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TEST_TARGET_NAME = PortStatus;
+			};
+			name = Debug;
+		};
+		842555F32DCA4A6100872947 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.github.oytech.PortStatusUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TEST_TARGET_NAME = PortStatus;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		842555C12DCA4A5F00872947 /* Build configuration list for PBXProject "PortStatus" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				842555E92DCA4A6100872947 /* Debug */,
+				842555EA2DCA4A6100872947 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		842555EB2DCA4A6100872947 /* Build configuration list for PBXNativeTarget "PortStatus" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				842555EC2DCA4A6100872947 /* Debug */,
+				842555ED2DCA4A6100872947 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		842555EE2DCA4A6100872947 /* Build configuration list for PBXNativeTarget "PortStatusTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				842555EF2DCA4A6100872947 /* Debug */,
+				842555F02DCA4A6100872947 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		842555F12DCA4A6100872947 /* Build configuration list for PBXNativeTarget "PortStatusUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				842555F22DCA4A6100872947 /* Debug */,
+				842555F32DCA4A6100872947 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 842555BE2DCA4A5F00872947 /* Project object */;
+}

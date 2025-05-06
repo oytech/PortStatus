@@ -1,20 +1,21 @@
 import SwiftUI
 
-struct Port: Identifiable  {
-    var name: String
-    var version: String
-    var isLatest: Bool
-
-    var id: String {
-         return "\(name)@\(version)"
-    }
-}
-
 @Observable class PortsModel {
+    private let service: PortServiceProtocol
     var ports: [Port]
 
     init(ports: [Port]) {
-       self.ports = ports
+        self.ports = ports
+        self.service = ShellPortService()
+    }
+
+    func load() {
+        do {
+            ports = try service.loadLocalPorts()
+        } catch {
+            //TODO: handle errors
+            ports = []
+        }
     }
 }
 
@@ -31,6 +32,7 @@ struct PortListView: View {
                 }
             }
             .listStyle(.plain)
+            .task { model.load() }
         }
         .padding()
     }

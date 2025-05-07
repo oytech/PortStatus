@@ -4,14 +4,23 @@ extension StringProtocol {
     var lines: [SubSequence] { split(whereSeparator: \.isNewline) }
 }
 
+enum PortStatus {
+    case latest, outdated, unknown
+}
+
 struct Port: Identifiable  {
     var name: String
     var version: String
-    var isLatest: Bool
+    var latestVersion: String?
 
     var id: String {
          return "\(name)@\(version)"
     }
+
+    var status: PortStatus {
+        return latestVersion.map {$0 == version ? PortStatus.latest : PortStatus.outdated } ?? PortStatus.unknown
+    }
+
 }
 
 protocol PortServiceProtocol {
@@ -50,6 +59,8 @@ class ShellPortService: PortServiceProtocol {
     }
 
     func loadLocalPorts() throws -> [Port] {
+        //TODO: get macports version too
+        //let command = "port version"
         let command = "port installed requested and active"
         let output = try executeShellCommand(command: command)
 
@@ -60,7 +71,7 @@ class ShellPortService: PortServiceProtocol {
                 let name = String(parts[0])
                 //FIXME: unreadable
                 let version = String(parts[1].split(separator: "+")[0].split(separator: "_")[0].dropFirst())
-                ports.append(Port(name: name, version: version, isLatest: true))
+                ports.append(Port(name: name, version: version))
             }
         }
         return ports

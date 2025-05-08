@@ -59,21 +59,27 @@ class ShellPortService: PortServiceProtocol {
     }
 
     func loadLocalPorts() throws -> [Port] {
-        //TODO: get macports version too
-        //let command = "port version"
-        let command = "port installed requested and active"
-        let output = try executeShellCommand(command: command)
-
+        let versionRegex = /[0-9][0-9a-z-]*(\.[0-9a-z-]+){0,4}/
         var ports: [Port] = []
-        for line in output.lines {
-            if line.contains("@") {
-                let parts = line.split(separator: " ")
+
+        let output = try executeShellCommand(command: "port version")
+        if let matches = try versionRegex.firstMatch(in: output) {
+            let version = String(matches.0)
+            ports.append(Port(name: "macports", version: version))
+        }
+
+        let installed = try executeShellCommand(command: "port installed requested and active")
+        for line in installed.lines {
+            let parts = line.split(separator: " ")
+            if parts.count > 2 {
                 let name = String(parts[0])
-                //FIXME: unreadable
-                let version = String(parts[1].split(separator: "+")[0].split(separator: "_")[0].dropFirst())
-                ports.append(Port(name: name, version: version))
+                if let matches = try versionRegex.firstMatch(in: String(parts[1])) {
+                    let version = String(matches.0)
+                    ports.append(Port(name: name, version: version))
+                }
             }
         }
+
         return ports
     }
 

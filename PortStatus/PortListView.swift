@@ -1,45 +1,52 @@
 import SwiftUI
+import os
 
 @Observable class PortsModel {
     private let service: PortServiceProtocol
     private let api: PortApiProtocol
+    private let logger: Logger
     var ports: [Port]
     var loading: Bool
-    var lastCheck: String?
+    var lastChecked: String?
 
     init(ports: [Port]) {
-        self.ports = ports
         self.service = ShellPortService()
         self.api = PortHttpApi()
+        self.logger = Logger(subsystem: Bundle.main.bundleIdentifier!, category: "")
+        self.ports = ports
         self.loading = false
     }
 
-    func load() async {
-        do {
-            ports = try service.loadLocalPorts()
-            loading = true
-            let versions: [String: String] = try await api.fetchPortVersions(names: ports.map { $0.name })
-            loading = false
+    private func updateLastChecked() {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "y-MM-dd HH:mm"
+        lastChecked = formatter.string(from: Date())
+    }
 
-            var updated: [Port] = []
-            for port in ports {
-                if let version = versions[port.name] {
-                    let new = Port(name: port.name, version: port.version, latestVersion: version)
-                    updated.append(new)
+    func load(partial: Bool = false) async {
+        do {
+            loading = true
+            logger.debug("loading...")
+
+            let localPorts = try service.loadLocalPorts()
+            if(partial) {
+                ports = localPorts
+            }
+            let remoteVersions: [String: String] = try await api.fetchPortVersions(names: localPorts.map { $0.name })
+
+            updateLastChecked()
+            ports = localPorts.map {
+                if let latestVersion = remoteVersions[$0.name] {
+                    Port(name: $0.name, version: $0.version, latestVersion: latestVersion)
                 }
                 else {
-                    updated.append(port)
+                    $0
                 }
             }
-
-            let formatter = DateFormatter()
-            formatter.dateFormat = "y-MM-dd HH:mm"
-            lastCheck = formatter.string(from: Date())
-
-            ports = updated
+            loading = false
         } catch {
             loading = false
-            //TODO: handle errors
+            logger.error("\(error)")
         }
     }
 }
@@ -48,35 +55,44 @@ struct PortListView: View {
     @State var model = PortsModel(ports: [])
 
     var body: some View {
-        //TODO: handla case when zero ports installed
-        ScrollView {
-            Grid(horizontalSpacing: 5, verticalSpacing: 10) {
-                GridRow {
-                    Text("Last checked: \(model.loading ? "loading..." : model.lastCheck ?? "")")
-                        .frame(maxWidth: .infinity, alignment: .leading)
-                        .padding([.top, .leading, .trailing,], 5)
-                        .gridCellColumns(3)
+        // TODO: handla case when zero ports installed
+        VStack {
+            HStack {
+                Text("Last check: \(model.loading ? "loading..." : model.lastChecked ?? "")")
+                    .padding([.top, .leading, .trailing,], 5)
+                Spacer()
+                Button {
+                    Task {
+                        await model.load()
+                    }
+                } label: {
+                    Text("reload")
                 }
-                Divider()
-                    .gridCellUnsizedAxes(.horizontal)
-                ForEach(model.ports) { port in
-                    GridRow {
-                        image(port.status)
-                            .gridColumnAlignment(.trailing)
-                            .foregroundColor(color(port.status))
-                        Text("\(port.name)")
-                            .gridColumnAlignment(.leading)
-                            .foregroundColor(color(port.status))
-                        Text("\(port.version)")
-                            .gridColumnAlignment(.trailing)
-                            .foregroundColor(color(port.status))
+                .disabled(model.loading)
+                .padding([.top, .leading, .trailing,], 5)
+            }
+            Divider()
+            ScrollView {
+                Grid(horizontalSpacing: 5, verticalSpacing: 10) {
+                    ForEach(model.ports) { port in
+                        GridRow {
+                            image(port.status)
+                                .gridColumnAlignment(.trailing)
+                                .foregroundColor(color(port.status))
+                                .padding(.leading, 15)
+                            Text("\(port.name)")
+                                .gridColumnAlignment(.leading)
+                                .foregroundColor(color(port.status))
+                            Spacer()
+                            Text("\(port.version)")
+                                .gridColumnAlignment(.trailing)
+                                .foregroundColor(color(port.status))
+                        }
                     }
                 }
             }
-            .frame(maxWidth: .infinity)
+            .task { await model.load(partial: true) }
         }
-        .frame(maxWidth: .infinity)
-        .task { await model.load() }
     }
 
     func image(_ status: PortStatus) -> Image {

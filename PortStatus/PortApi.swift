@@ -16,8 +16,7 @@ enum HttpError: Error {
 class PortHttpApi: PortApiProtocol {
 
     func fetchPortVersion(name: String) async throws -> String {
-        //try await Task.sleep(nanoseconds: 2_000_000_000)
-        //TODO: escape name?
+        precondition(!name.isEmpty)
         let url = URL(string: "https://ports.macports.org/api/v1/ports/\(name)/")!
 
         let (data, response) = try await URLSession.shared.data(from: url)
@@ -31,6 +30,7 @@ class PortHttpApi: PortApiProtocol {
         return port.version
     }
 
+    // FIXME: return versions even if one fetch fails with http error
     func fetchPortVersions(names: [String]) async throws -> [String: String] {
         try await withThrowingTaskGroup(
             of: (String, String).self,

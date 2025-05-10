@@ -59,6 +59,7 @@ class ShellPortService: PortServiceProtocol {
     }
 
     func loadLocalPorts() throws -> [Port] {
+        let nameRegex = /[a-zA-Z0-9-]+/
         let versionRegex = /[0-9][0-9a-z-]*(\.[0-9a-z-]+){0,4}/
         var ports: [Port] = []
 
@@ -72,10 +73,11 @@ class ShellPortService: PortServiceProtocol {
         for line in installed.lines {
             let parts = line.split(separator: " ")
             if parts.count > 2 {
-                let name = String(parts[0])
-                if let matches = try versionRegex.firstMatch(in: String(parts[1])) {
-                    let version = String(matches.0)
-                    ports.append(Port(name: name, version: version))
+                let namePart = String(parts[0])
+                let versionPart = String(parts[1])
+
+                if let versionMatch = try versionRegex.firstMatch(in: versionPart), let _ = try nameRegex.wholeMatch(in: namePart) {
+                    ports.append(Port(name: namePart, version: String(versionMatch.0)))
                 }
             }
         }

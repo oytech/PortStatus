@@ -24,16 +24,26 @@ struct Port: Identifiable  {
 }
 
 protocol PortServiceProtocol {
-    func loadLocalPorts() throws -> [Port]
+    func loadLocalPorts() async throws -> [Port]
 }
 
 enum ShellError: Error {
     case nonZeroStatusCode(statusCode: Int)
 }
 
+extension Process {
+    func waitUntilExitAsync() async {
+        await withCheckedContinuation { c in
+            self.terminationHandler = { _ in
+                c.resume()
+            }
+        }
+    }
+}
+
 class ShellPortService: PortServiceProtocol {
 
-    func executeShellCommand(command: String) throws -> String {
+    func execShellCommand(command: String) async throws -> String {
         let process = Process()
         let pipe = Pipe()
 
@@ -47,10 +57,9 @@ class ShellPortService: PortServiceProtocol {
         // if zsh executable does no exist then throws error
         // if zsh does not found command then status != 0
         try process.run()
-
         let data = pipe.fileHandleForReading.readDataToEndOfFile()
-        //TODO: make async?
-        process.waitUntilExit()
+
+        await process.waitUntilExitAsync()
         if process.terminationStatus != 0 {
             throw ShellError.nonZeroStatusCode(statusCode: Int(process.terminationStatus))
         }
@@ -58,17 +67,19 @@ class ShellPortService: PortServiceProtocol {
         return String(data: data, encoding: .utf8)!
     }
 
-    func loadLocalPorts() throws -> [Port] {
+    func loadLocalPorts() async throws -> [Port] {
         let nameRegex = /[a-zA-Z0-9-]+/
         let versionRegex = /[0-9][0-9a-z-]*(\.[0-9a-z-]+){0,4}/
         var ports: [Port] = []
 
-        let output = try executeShellCommand(command: "port version")
-        if let match = output.firstMatch(of: versionRegex) {
+        async let checkVersion = execShellCommand(command: "port version")
+        async let checkInstalled = execShellCommand(command: "port installed requested and active")
+        let (version, installed) = try await (checkVersion, checkInstalled)
+
+        if let match = version.firstMatch(of: versionRegex) {
             ports.append(Port(name: "macports", version: String(match.0)))
         }
 
-        let installed = try executeShellCommand(command: "port installed requested and active")
         for line in installed.lines {
             let parts = line.split(separator: " ")
             if parts.count > 2 {

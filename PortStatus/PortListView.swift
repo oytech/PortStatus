@@ -28,7 +28,7 @@ import os
             loading = true
             logger.debug("loading...")
 
-            let localPorts = try service.loadLocalPorts()
+            let localPorts = try await service.loadLocalPorts()
             if(partial) {
                 ports = localPorts
             }

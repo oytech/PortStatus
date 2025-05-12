@@ -64,20 +64,19 @@ class ShellPortService: PortServiceProtocol {
         var ports: [Port] = []
 
         let output = try executeShellCommand(command: "port version")
-        if let matches = try versionRegex.firstMatch(in: output) {
-            let version = String(matches.0)
-            ports.append(Port(name: "macports", version: version))
+        if let match = output.firstMatch(of: versionRegex) {
+            ports.append(Port(name: "macports", version: String(match.0)))
         }
 
         let installed = try executeShellCommand(command: "port installed requested and active")
         for line in installed.lines {
             let parts = line.split(separator: " ")
             if parts.count > 2 {
-                let namePart = String(parts[0])
-                let versionPart = String(parts[1])
+                let namePart = parts[0]
+                let versionPart = parts[1]
 
-                if let versionMatch = try versionRegex.firstMatch(in: versionPart), let _ = try nameRegex.wholeMatch(in: namePart) {
-                    ports.append(Port(name: namePart, version: String(versionMatch.0)))
+                if let _ = namePart.wholeMatch(of: nameRegex), let match = versionPart.firstMatch(of: versionRegex) {
+                    ports.append(Port(name: String(namePart), version: String(match.0)))
                 }
             }
         }

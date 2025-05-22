@@ -2,12 +2,14 @@ import SwiftUI
 import os
 
 @Observable class PortsModel {
+    static private let reloadInterval = TimeInterval(60 * 60) // in seconds
     private let service: PortServiceProtocol
     private let api: PortApiProtocol
     private let logger: Logger
     var ports: [Port]
     var loading: Bool
     var lastChecked: String?
+    var timer: Timer?
 
     init(ports: [Port]) {
         self.service = ShellPortService()
@@ -15,6 +17,18 @@ import os
         self.logger = Logger(subsystem: Bundle.main.bundleIdentifier!, category: "")
         self.ports = ports
         self.loading = false
+    }
+
+    deinit {
+        timer?.invalidate()
+    }
+
+    func scheduleReload() {
+        self.timer = Timer.scheduledTimer(withTimeInterval: PortsModel.reloadInterval, repeats: true) { [weak self] _ in
+            Task {
+                await self?.load()
+            }
+        }
     }
 
     private func updateLastChecked() {
@@ -26,7 +40,7 @@ import os
     func load(partial: Bool = false) async {
         do {
             loading = true
-            logger.debug("loading...")
+            logger.debug("loading ports...")
 
             let localPorts = try await service.loadLocalPorts()
             if(partial) {
@@ -91,7 +105,10 @@ struct PortListView: View {
                     }
                 }
             }
-            .task { await model.load(partial: true) }
+            .task {
+                await model.load(partial: true)
+                model.scheduleReload()
+            }
         }
     }
 

@@ -30,18 +30,26 @@ class PortHttpApi: PortApiProtocol {
         return port.version
     }
 
-    // FIXME: return versions even if one fetch fails with http error
     func fetchPortVersions(names: [String]) async throws -> [String: String] {
         try await withThrowingTaskGroup(
-            of: (String, String).self,
+            of: (String, String)?.self,
             returning: [String: String].self
         ) { taskGroup in
             for name in names {
-                taskGroup.addTask { try await (name, self.fetchPortVersion(name: name)) }
+                taskGroup.addTask {
+                    do {
+                        return try await (name, self.fetchPortVersion(name: name))
+                    } catch HttpError.error(code: 404) {
+                        // do not fail if some port not found
+                        return nil
+                    } catch let error {
+                        throw error
+                    }
+                }
             }
 
             var versions: [String: String] = [:]
-            while let data = try await taskGroup.next() {
+            for try await data in taskGroup.compactMap({ $0 }) {
                 versions[data.0] = data.1
             }
 

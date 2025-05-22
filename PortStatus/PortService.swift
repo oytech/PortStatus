@@ -68,7 +68,7 @@ class ShellPortService: PortServiceProtocol {
     }
 
     func loadLocalPorts() async throws -> [Port] {
-        let nameRegex = /[a-zA-Z0-9-]+/
+        let nameRegex = /[a-zA-Z0-9-.]+/
         let versionRegex = /[0-9][0-9a-z-]*(\.[0-9a-z-]+){0,4}/
         var ports: [Port] = []
 

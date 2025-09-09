@@ -1,5 +1,7 @@
 import SwiftUI
 import os
+import FileMonitor
+import AsyncAlgorithms
 
 @Observable class PortsModel {
     static private let reloadInterval = TimeInterval(60 * 60) // in seconds
@@ -27,6 +29,22 @@ import os
         self.timer = Timer.scheduledTimer(withTimeInterval: PortsModel.reloadInterval, repeats: true) { [weak self] _ in
             Task {
                 await self?.load()
+            }
+        }
+        Task {
+            do {
+                let dir = URL(fileURLWithPath: "/opt/local/var/macports/registry", isDirectory: true)
+                let monitor = try FileMonitor(directory: dir)
+                try monitor.start()
+                for await event in monitor.stream.debounce(for: .seconds(30)) {
+                    switch event {
+                    default:
+                        logger.debug("installed macports changed")
+                        timer?.fire()
+                    }
+                }
+            } catch {
+                logger.error("\(error)")
             }
         }
     }

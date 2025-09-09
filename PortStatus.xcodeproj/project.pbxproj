@@ -6,6 +6,11 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		845264E92E6F169F001B03A5 /* FileMonitor in Frameworks */ = {isa = PBXBuildFile; productRef = 845264E82E6F169F001B03A5 /* FileMonitor */; };
+		849DCDEA2E70AE2600BB1353 /* AsyncAlgorithms in Frameworks */ = {isa = PBXBuildFile; productRef = 849DCDE92E70AE2600BB1353 /* AsyncAlgorithms */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXContainerItemProxy section */
 		842555D82DCA4A6100872947 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -52,6 +57,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				845264E92E6F169F001B03A5 /* FileMonitor in Frameworks */,
+				849DCDEA2E70AE2600BB1353 /* AsyncAlgorithms in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -78,6 +85,7 @@
 				842555C82DCA4A5F00872947 /* PortStatus */,
 				842555DA2DCA4A6100872947 /* PortStatusTests */,
 				842555E42DCA4A6100872947 /* PortStatusUITests */,
+				845264E72E6F169F001B03A5 /* Frameworks */,
 				842555C72DCA4A5F00872947 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -90,6 +98,13 @@
 				842555E12DCA4A6100872947 /* PortStatusUITests.xctest */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		845264E72E6F169F001B03A5 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -112,6 +127,8 @@
 			);
 			name = PortStatus;
 			packageProductDependencies = (
+				845264E82E6F169F001B03A5 /* FileMonitor */,
+				849DCDE92E70AE2600BB1353 /* AsyncAlgorithms */,
 			);
 			productName = PortStatus;
 			productReference = 842555C62DCA4A5F00872947 /* PortStatus.app */;
@@ -195,6 +212,10 @@
 			);
 			mainGroup = 842555BD2DCA4A5F00872947;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				84ECE90C2E6E15C8000322A9 /* XCRemoteSwiftPackageReference "FileMonitor" */,
+				849DCDE82E70AE2600BB1353 /* XCRemoteSwiftPackageReference "swift-async-algorithms" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 842555C72DCA4A5F00872947 /* Products */;
 			projectDirPath = "";
@@ -543,6 +564,38 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		849DCDE82E70AE2600BB1353 /* XCRemoteSwiftPackageReference "swift-async-algorithms" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/apple/swift-async-algorithms.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.4;
+			};
+		};
+		84ECE90C2E6E15C8000322A9 /* XCRemoteSwiftPackageReference "FileMonitor" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/aus-der-Technik/FileMonitor.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.2.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		845264E82E6F169F001B03A5 /* FileMonitor */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 84ECE90C2E6E15C8000322A9 /* XCRemoteSwiftPackageReference "FileMonitor" */;
+			productName = FileMonitor;
+		};
+		849DCDE92E70AE2600BB1353 /* AsyncAlgorithms */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 849DCDE82E70AE2600BB1353 /* XCRemoteSwiftPackageReference "swift-async-algorithms" */;
+			productName = AsyncAlgorithms;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 842555BE2DCA4A5F00872947 /* Project object */;
 }

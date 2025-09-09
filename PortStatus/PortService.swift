@@ -17,6 +17,7 @@ struct Port: Identifiable  {
          return "\(name)@\(version)"
     }
 
+    // FIXME: handle case when installed version could be newer?
     var status: PortStatus {
         return latestVersion.map {$0 == version ? PortStatus.latest : PortStatus.outdated } ?? PortStatus.unknown
     }
